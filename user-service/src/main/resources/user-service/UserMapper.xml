@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.user.mapper.UserMapper">
+    <resultMap type="com.github.user.entity.User" id="user">
+        <id column="uid" property="uid"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="createDate" property="createDate"/>
+    </resultMap>
+    
+    <resultMap type="com.github.user.entity.User" id="userWithDept">
+        <id column="uid" property="uid"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="createDate" property="createDate"/>
+        <result column="deptName" property="deptName"/>
+    </resultMap>
+
+    <select id="count" parameterType="com.github.mybatisq.Query" resultType="java.lang.Integer">
+        select count(0) <include refid="com.github.user.mapper.QMapper.countFrom"/>
+    </select>
+
+    <select id="select" parameterType="com.github.mybatisq.Query" resultMap="user">
+        select ${tableAlias}.uid,${tableAlias}.username,${tableAlias}.password,${tableAlias}.createDate <include refid="com.github.user.mapper.QMapper.selectFrom"/>
+    </select>
+    
+    <select id="selectWithDept" parameterType="com.github.mybatisq.Query" resultMap="userWithDept">
+        select ${tableAlias}.uid,${tableAlias}.username,${tableAlias}.password,${tableAlias}.createDate,d.deptName
+        <include refid="com.github.user.mapper.QMapper.join"/> 
+        <include refid="com.github.user.mapper.QMapper.where"/> 
+        <include refid="com.github.user.mapper.QMapper.orderBy"/> 
+        <include refid="com.github.user.mapper.QMapper.limit"/>
+    </select>
+
+    <insert id="insert" parameterType="com.github.user.entity.User" useGeneratedKeys="true" keyProperty="uid">
+        <trim prefix="insert user (" suffix=")" suffixOverrides=",">
+            <if test="uid != null">uid,</if>
+            <if test="username != null">username,</if>
+            <if test="password != null">password,</if>
+            <if test="createDate != null">createDate,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uid != null">#{uid},</if>
+            <if test="username != null">#{username},</if>
+            <if test="password != null">#{password},</if>
+            <if test="createDate != null">#{createDate},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.github.user.entity.User">
+        <trim prefix="update user set" suffix="where uid=#{uid}" suffixOverrides=",">
+            <if test="username != null">username=#{username},</if>
+            <if test="password != null">password=#{password},</if>
+            <if test="createDate != null">createDate=#{createDate},</if>
+        </trim>
+    </update>
+
+    <delete id="delete">
+        delete from user where uid=#{uid}
+    </delete>
+</mapper>

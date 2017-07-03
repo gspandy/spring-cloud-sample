@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: user-service
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        enabled: true
+        format: YAML
+  zipkin:
+    baseUrl: http://localhost:6063
+
+server:
+  port: 6060
+  
+mybatis:
+  mapper-locations: classpath*:/user-service/*Mapper.xml

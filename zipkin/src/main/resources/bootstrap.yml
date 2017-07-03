@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: zipkin
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        enabled: true
+
+server:
+  port: 6063

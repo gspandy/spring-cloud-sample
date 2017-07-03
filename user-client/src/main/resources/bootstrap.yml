@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: user-client
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        enabled: true
+  zipkin:
+    baseUrl: http://localhost:6063
+    
+server:
+  port: 6061

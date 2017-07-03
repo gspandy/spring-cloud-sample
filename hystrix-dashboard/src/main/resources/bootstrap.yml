@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: hystrix-dashboard
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        enabled: true
+
+server:
+  port: 6062
+  
+turbine:
+  aggregator:
+    clusterConfig: user-client   #turbine名称
+  appConfig: user-client         #监控的服务名称，如此配置将汇总所有名称为user-client服务的/hystrix.stream流
