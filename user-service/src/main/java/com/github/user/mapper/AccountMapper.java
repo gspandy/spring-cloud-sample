@@ -6,18 +6,18 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.github.mybatisq.Query;
-import com.github.user.entity.User;
+import com.github.user.entity.Account;
 
 @Mapper
-public interface UserMapper {
+public interface AccountMapper {
 
-    int count(Query<UserTable> query);
+    int count(Query<AccountTable> query);
 
-    List<User> select(Query<UserTable> query);
+    List<Account> select(Query<AccountTable> query);
 
-    int insert(User user);
+    int insert(Account account);
 
-    int update(User user);
+    int update(Account account);
 
     int delete(@Param("userId") Integer userId);
 

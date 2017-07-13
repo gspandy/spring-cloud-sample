@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>出错啦</title>
+</head>
+<body>
+    <p>出错啦！</p>
+    <p>错误码：<span th:text="${errorInfo.code}">E000</span></p>
+    <p th:text="${errorInfo.message}">系统发生了致命错误</p>
+    <script th:if="${errorInfo.redirectUrl}">
+        location.href = "[[${errorInfo.redirectUrl}]]";
+    </script>
+</body>
+</html>

@@ -7,7 +7,7 @@ import com.github.mybatisq.Table;
 
 public class UserTable extends Table {
 
-    UserTable() {
+    private UserTable() {
         super("user", "u");
     }
 
@@ -24,20 +24,25 @@ public class UserTable extends Table {
     /**
      * 用户id
      */
-    public Column<UserTable, Integer> uid = new Column<>("uid");
+    public Column<UserTable, Integer> user_id = new Column<>("user_id");
 
     /**
-     * 用户名
+     * 姓名
      */
-    public Column<UserTable, String> username = new Column<>("username");
+    public Column<UserTable, String> name = new Column<>("name");
 
     /**
-     * 密码
+     * Email
      */
-    public Column<UserTable, String> password = new Column<>("password");
+    public Column<UserTable, String> email = new Column<>("email");
 
     /**
-     * 创建日期
+     * 工号
      */
-    public Column<UserTable, java.util.Date> createDate = new Column<>("createDate");
+    public Column<UserTable, String> employee_no = new Column<>("employee_no");
+
+    /**
+     * 出生日期
+     */
+    public Column<UserTable, java.util.Date> birthday = new Column<>("birthday");
 }

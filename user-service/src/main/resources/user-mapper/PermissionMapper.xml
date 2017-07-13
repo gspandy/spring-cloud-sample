@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.user.mapper.PermissionMapper">
+    <resultMap type="com.github.user.entity.Permission" id="permission">
+        <id column="permission_id" property="permissionId"/>
+        <result column="permission_code" property="permissionCode"/>
+        <result column="group_id" property="groupId"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+    <select id="count" parameterType="com.github.mybatisq.Query" resultType="java.lang.Integer">
+        select count(0) <include refid="com.github.user.mapper.QMapper.countFrom"/>
+    </select>
+
+    <select id="select" parameterType="com.github.mybatisq.Query" resultMap="permission">
+        select ${tableAlias}.permission_id,${tableAlias}.permission_code,${tableAlias}.group_id,${tableAlias}.user_id <include refid="com.github.user.mapper.QMapper.selectFrom"/>
+    </select>
+
+    <insert id="insert" parameterType="com.github.user.entity.Permission" useGeneratedKeys="true" keyProperty="permissionId">
+        <trim prefix="insert permission (" suffix=")" suffixOverrides=",">
+            <if test="permissionId != null">permission_id,</if>
+            <if test="permissionCode != null">permission_code,</if>
+            <if test="groupId != null">group_id,</if>
+            <if test="userId != null">user_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="permissionId != null">#{permissionId},</if>
+            <if test="permissionCode != null">#{permissionCode},</if>
+            <if test="groupId != null">#{groupId},</if>
+            <if test="userId != null">#{userId},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.github.user.entity.Permission">
+        <trim prefix="update permission set" suffix="where permission_id=#{permissionId}" suffixOverrides=",">
+            <if test="permissionCode != null">permission_code=#{permissionCode},</if>
+            <if test="groupId != null">group_id=#{groupId},</if>
+            <if test="userId != null">user_id=#{userId},</if>
+        </trim>
+    </update>
+
+    <delete id="delete">
+        delete from permission where permission_id=#{permissionId}
+    </delete>
+</mapper>

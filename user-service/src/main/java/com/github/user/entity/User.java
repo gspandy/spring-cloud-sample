@@ -8,85 +8,106 @@ public class User {
     /**
      * 用户id
      */
-    private Integer uid;
+    private Integer userId;
 
     /**
-     * 用户名
+     * 姓名
      */
-    private String username;
+    private String name;
 
     /**
-     * 密码
+     * Email
      */
-    private String password;
+    private String email;
 
     /**
-     * 创建日期
+     * 工号
      */
-    private java.util.Date createDate;
+    private String employeeNo;
+
+    /**
+     * 出生日期
+     */
+    private java.util.Date birthday;
 
     /**
      * 获取用户id
      * @return 用户id
      */
-    public Integer getUid() {
-        return uid;
+    public Integer getUserId() {
+        return userId;
     }
 
     /**
      * 设置用户id
-     * @param uid 用户id
+     * @param userId 用户id
      */
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     /**
-     * 获取用户名
-     * @return 用户名
+     * 获取姓名
+     * @return 姓名
      */
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
     /**
-     * 设置用户名
-     * @param username 用户名
+     * 设置姓名
+     * @param name 姓名
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * 获取密码
-     * @return 密码
+     * 获取Email
+     * @return Email
      */
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * 设置密码
-     * @param password 密码
+     * 设置Email
+     * @param email Email
      */
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
-     * 获取创建日期
-     * @return 创建日期
+     * 获取工号
+     * @return 工号
      */
-    public java.util.Date getCreateDate() {
-        return createDate;
+    public String getEmployeeNo() {
+        return employeeNo;
     }
 
     /**
-     * 设置创建日期
-     * @param createDate 创建日期
+     * 设置工号
+     * @param employeeNo 工号
      */
-    public void setCreateDate(java.util.Date createDate) {
-        this.createDate = createDate;
+    public void setEmployeeNo(String employeeNo) {
+        this.employeeNo = employeeNo;
+    }
+
+    /**
+     * 获取出生日期
+     * @return 出生日期
+     */
+    public java.util.Date getBirthday() {
+        return birthday;
+    }
+
+    /**
+     * 设置出生日期
+     * @param birthday 出生日期
+     */
+    public void setBirthday(java.util.Date birthday) {
+        this.birthday = birthday;
     }
 
 }

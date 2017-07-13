@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.user.mapper.GroupMapper">
+    <resultMap type="com.github.user.entity.Group" id="group">
+        <id column="group_id" property="groupId"/>
+        <result column="group_name" property="groupName"/>
+    </resultMap>
+
+    <select id="count" parameterType="com.github.mybatisq.Query" resultType="java.lang.Integer">
+        select count(0) <include refid="com.github.user.mapper.QMapper.countFrom"/>
+    </select>
+
+    <select id="select" parameterType="com.github.mybatisq.Query" resultMap="group">
+        select ${tableAlias}.group_id,${tableAlias}.group_name <include refid="com.github.user.mapper.QMapper.selectFrom"/>
+    </select>
+
+    <insert id="insert" parameterType="com.github.user.entity.Group" useGeneratedKeys="true" keyProperty="groupId">
+        <trim prefix="insert group (" suffix=")" suffixOverrides=",">
+            <if test="groupId != null">group_id,</if>
+            <if test="groupName != null">group_name,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="groupId != null">#{groupId},</if>
+            <if test="groupName != null">#{groupName},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.github.user.entity.Group">
+        <trim prefix="update group set" suffix="where group_id=#{groupId}" suffixOverrides=",">
+            <if test="groupName != null">group_name=#{groupName},</if>
+        </trim>
+    </update>
+
+    <delete id="delete">
+        delete from group where group_id=#{groupId}
+    </delete>
+</mapper>
