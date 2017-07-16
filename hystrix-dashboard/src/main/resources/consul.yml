@@ -1,0 +1,4 @@
+turbine:
+  aggregator:
+    clusterConfig: user-client
+  appConfig: user-client
