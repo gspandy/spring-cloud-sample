@@ -7,8 +7,7 @@ spring:
       port: 8500
       config:
         enabled: true
-  zipkin:
-    baseUrl: http://localhost:6063
+        format: YAML
     
 server:
   port: 6061
