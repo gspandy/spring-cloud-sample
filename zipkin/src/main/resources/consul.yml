@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/zipkin?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+  sleuth:
+    enabled: false
+  rabbitmq:
+    addresses: 127.0.0.1:5672
+    username: rabbit
+    password: rabbit
+
+zipkin:
+  storage:
+    type: mysql
