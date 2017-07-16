@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.github.user.mapper.UserGroupMapper">
-    <resultMap type="com.github.user.entity.UserGroup" id="userGroup">
+<mapper namespace="com.github.user.service.mapper.UserGroupMapper">
+    <resultMap type="com.github.user.service.entity.UserGroup" id="userGroup">
         <id column="user_group_id" property="userGroupId"/>
         <result column="user_id" property="userId"/>
         <result column="group_id" property="groupId"/>
     </resultMap>
 
     <select id="count" parameterType="com.github.mybatisq.Query" resultType="java.lang.Integer">
-        select count(0) <include refid="com.github.user.mapper.QMapper.countFrom"/>
+        select count(0) <include refid="com.github.user.service.mapper.QMapper.countFrom"/>
     </select>
 
     <select id="select" parameterType="com.github.mybatisq.Query" resultMap="userGroup">
-        select ${tableAlias}.user_group_id,${tableAlias}.user_id,${tableAlias}.group_id <include refid="com.github.user.mapper.QMapper.selectFrom"/>
+        select ${tableAlias}.user_group_id,${tableAlias}.user_id,${tableAlias}.group_id <include refid="com.github.user.service.mapper.QMapper.selectFrom"/>
     </select>
 
-    <insert id="insert" parameterType="com.github.user.entity.UserGroup" useGeneratedKeys="true" keyProperty="userGroupId">
+    <insert id="insert" parameterType="com.github.user.service.entity.UserGroup" useGeneratedKeys="true" keyProperty="userGroupId">
         <trim prefix="insert user_group (" suffix=")" suffixOverrides=",">
             <if test="userGroupId != null">user_group_id,</if>
             <if test="userId != null">user_id,</if>
@@ -28,7 +28,7 @@
         </trim>
     </insert>
 
-    <update id="update" parameterType="com.github.user.entity.UserGroup">
+    <update id="update" parameterType="com.github.user.service.entity.UserGroup">
         <trim prefix="update user_group set" suffix="where user_group_id=#{userGroupId}" suffixOverrides=",">
             <if test="userId != null">user_id=#{userId},</if>
             <if test="groupId != null">group_id=#{groupId},</if>

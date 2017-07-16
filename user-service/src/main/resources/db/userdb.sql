@@ -31,7 +31,7 @@ create table user_group (
     key (user_id, group_id)
 ) comment '用户分组';
 
-create table permission (
+create table permissionCode (
     permission_id int not null auto_increment comment '权限id',
     permission_code bigint not null comment '权限码',
     group_id int not null comment '组id',
@@ -42,7 +42,7 @@ create table permission (
 ) comment '权限';
 
 create table log (
-    log_id int not null auto_increment comment '日志id',
+    log_id varchar(36) not null auto_increment comment '日志id',
     log_type int not null comment '日志类型',
     user_id int not null comment '操作用户id',
     log_message varchar(200) not null comment '日志信息',
@@ -54,4 +54,4 @@ create table log (
 
 insert account(username, password, last_login_date) values ('admin', '7fcf4ba391c48784edde599889d6e3f1e47a27db36ecc050cc92f259bfac38afad2c68a1ae804d77075e8fb722503f3eca2b2c1006ee6f6c7b7628cb45fffd1d', current_timestamp);
 insert user (user_id, name, email, employee_no, birthday) values (last_insert_id(), '管理员', 'admin@admin.com', '0', current_timestamp);
-insert permission (permission_code, group_id, user_id) values (9223372036854775807, 0, last_insert_id());
+insert permissionCode (permission_code, group_id, user_id) values (9223372036854775807, 0, last_insert_id());

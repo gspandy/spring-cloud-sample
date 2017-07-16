@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.github.user.mapper.AccountMapper">
-    <resultMap type="com.github.user.entity.Account" id="account">
+<mapper namespace="com.github.user.service.mapper.AccountMapper">
+    <resultMap type="com.github.user.service.entity.Account" id="account">
         <id column="user_id" property="userId"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
@@ -9,14 +9,14 @@
     </resultMap>
 
     <select id="count" parameterType="com.github.mybatisq.Query" resultType="java.lang.Integer">
-        select count(0) <include refid="com.github.user.mapper.QMapper.countFrom"/>
+        select count(0) <include refid="com.github.user.service.mapper.QMapper.countFrom"/>
     </select>
 
     <select id="select" parameterType="com.github.mybatisq.Query" resultMap="account">
-        select ${tableAlias}.user_id,${tableAlias}.username,${tableAlias}.password,${tableAlias}.last_login_date <include refid="com.github.user.mapper.QMapper.selectFrom"/>
+        select ${tableAlias}.user_id,${tableAlias}.username,${tableAlias}.password,${tableAlias}.last_login_date <include refid="com.github.user.service.mapper.QMapper.selectFrom"/>
     </select>
 
-    <insert id="insert" parameterType="com.github.user.entity.Account" useGeneratedKeys="true" keyProperty="userId">
+    <insert id="insert" parameterType="com.github.user.service.entity.Account" useGeneratedKeys="true" keyProperty="userId">
         <trim prefix="insert account (" suffix=")" suffixOverrides=",">
             <if test="userId != null">user_id,</if>
             <if test="username != null">username,</if>
@@ -31,7 +31,7 @@
         </trim>
     </insert>
 
-    <update id="update" parameterType="com.github.user.entity.Account">
+    <update id="update" parameterType="com.github.user.service.entity.Account">
         <trim prefix="update account set" suffix="where user_id=#{userId}" suffixOverrides=",">
             <if test="username != null">username=#{username},</if>
             <if test="password != null">password=#{password},</if>
