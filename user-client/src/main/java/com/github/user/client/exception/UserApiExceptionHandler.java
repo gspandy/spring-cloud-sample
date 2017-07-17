@@ -14,7 +14,7 @@ import java.io.IOException;
  * 用户api异常处理器
  */
 @Component
-class UserApiExceptionHandler extends HandlerBase {
+public class UserApiExceptionHandler extends HandlerBase {
 
     @Override
     public boolean canHandle(Exception ex) {

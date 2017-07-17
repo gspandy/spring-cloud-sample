@@ -1,9 +1,12 @@
 package com.github.user.api.exception;
 
+import com.netflix.hystrix.exception.ExceptionNotWrappedByHystrix;
+import com.netflix.hystrix.exception.HystrixBadRequestException;
+
 /**
  * 用户Api异常
  */
-public class UserApiException extends Exception {
+public class UserApiException extends HystrixBadRequestException implements ExceptionNotWrappedByHystrix {
 
     /**
      * 无效的用户名

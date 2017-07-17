@@ -24,7 +24,7 @@ class ControllerExceptionHandler implements HandlerExceptionResolver {
     private UnauthorizedExceptionHandler unauthorizedExceptionHandler;
 
     @Autowired
-    private HystrixRuntimeExceptionHandler hystrixRuntimeExceptionHandler;
+    private UserApiExceptionHandler userApiExceptionHandler;
 
     @Autowired
     private DefaultExceptionHandler defaultExceptionHandler;
@@ -39,7 +39,7 @@ class ControllerExceptionHandler implements HandlerExceptionResolver {
             exceptionHandlers = Arrays.asList(
                     notLoggedInExceptionHandler,
                     unauthorizedExceptionHandler,
-                    hystrixRuntimeExceptionHandler,
+                    userApiExceptionHandler,
                     defaultExceptionHandler
             );
         }
